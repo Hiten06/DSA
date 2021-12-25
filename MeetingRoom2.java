@@ -22,9 +22,11 @@ public class MyClass {
     }
     public static void main(String args[]) {
      ArrayList<Interval> AL = new ArrayList<>();
-     AL.add(new Interval(5,8));
+     AL.add(new Interval(1,3));
+     AL.add(new Interval(2,6));
+     AL.add(new Interval(7,8));
+     AL.add(new Interval(8,10));
      AL.add(new Interval(9,15));
-     AL.add(new Interval(15,20));
      System.out.println(MeetRooms(AL));
     }
     static int GlobalC =0;
@@ -43,11 +45,10 @@ public class MyClass {
          int ptr1 = 0,ptr2=0;
          int localc = 0;
     
-         while(ptr1 < size  && ptr2< size){
+         while(ptr1 < size){
              if(strt[ptr1] < end[ptr2]){
                  localc++;
                  GlobalC=Math.max(localc,GlobalC);
-                
                  ptr1++;
              }
              else if(strt[ptr1] > end[ptr2]){
@@ -57,8 +58,8 @@ public class MyClass {
              }
              else if(strt[ptr1] == end[ptr2]){
                  ptr2++;
-                 localc++;
-                 GlobalC=Math.max(localc,GlobalC);
+                 ptr1++;
+                // GlobalC=Math.max(localc,GlobalC);
              }
          }
          return GlobalC;
